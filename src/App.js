@@ -5,7 +5,7 @@ import Counter from './counter/counter';
 class App extends Component {
   render() {
     return (
-      <Counter />
+      <Counter name="yang"/>
     );
   }
 }

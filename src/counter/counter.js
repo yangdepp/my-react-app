@@ -29,6 +29,7 @@ class counter extends Component {
         <span className="result">{this.state.number}</span>
         <button className='add' onClick={this.add.bind(this)}>+</button>
         <button className='minus' onClick={this.minus}>-</button>
+        <span>{this.props.name}</span>
       </div>
     );
   }
