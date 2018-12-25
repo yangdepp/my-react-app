@@ -22,9 +22,6 @@ class counter extends Component {
     })
     this.props.selectType(2);
   }
-  // minus(){
-  //   console.log(this)
-  // }
   render() {
     return (
       <div className="box">

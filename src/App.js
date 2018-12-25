@@ -3,8 +3,8 @@ import './App.css';
 import Counter from './counter/counter';
 
 class App extends Component {
-  constructor(props){
-    super(props)
+  constructor(){
+    super()
     this.state = {
       btnType: '?'
     }
@@ -23,8 +23,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p className="click-type">子组件点了{this.state.btnType}号</p>
-        <Counter name="yang" selectType={this.selectType.bind(this)}/>
+        <p className="click-type">点了子组件的<span className="type">{this.state.btnType}</span>号</p>
+        <Counter name="App" selectType={this.selectType.bind(this)}/>
       </div>
     );
   }

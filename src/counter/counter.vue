@@ -3,7 +3,7 @@
     <span class="result">{{number}}</span>
     <button class="add" @click="add">+</button>
     <button class="minus" @click="minus">-</button>
-    <span class="name">name:{{name}}</span>
+    <span class="name">父组件的名字:{{name}}</span>
   </div>
 </template>
 <script>
