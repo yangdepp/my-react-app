@@ -3,7 +3,7 @@
     <span class="result">{{number}}</span>
     <button class="add" @click="add">+</button>
     <button class="minus" @click="minus">-</button>
-    <span>{{name}}</span>
+    <span>name:{{name}}</span>
   </div>
 </template>
 <script>
@@ -34,7 +34,7 @@ export default {
   vertical-align: middle;
 }
 
-.red {
+.result {
   color: red;
 }
 

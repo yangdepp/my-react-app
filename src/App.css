@@ -1,7 +1,7 @@
-
-.App{
+.App {
   text-align: center;
 }
+
 .box {
   display: flex;
   align-items: center;
@@ -15,6 +15,10 @@
   margin: 0 10px;
 }
 
-span {
+.result {
   color: red;
+}
+
+.name {
+  margin-left: 10px;
 }
