@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      btnType: ''
+      btnType: '?'
     }
   }
   selectType(type){
@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p className="click-type">我点了{this.state.btnType}号</p>
+        <p className="click-type">子组件点了{this.state.btnType}号</p>
         <Counter name="yang" selectType={this.selectType.bind(this)}/>
       </div>
     );
