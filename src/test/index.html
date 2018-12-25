@@ -9,25 +9,28 @@
 </head>
 <style>
   .box {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 50px;
     font-size: 20px;
+    vertical-align: middle;
   }
 
   #add {
-    margin: 0 20px;
+    margin: 0 10px;
   }
 
   span {
-    cursor: pointer;
+    color: red;
   }
 </style>
 
 <body>
   <div class="box">
     <span id="result">0</span>
-    <span id="add">+</span>
-    <span id="minus">-</span>
+    <button id="add">+</button>
+    <button id="minus">-</button>
   </div>
   <script>
     targetResult = document.querySelector('#result');
