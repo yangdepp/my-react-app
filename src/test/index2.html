@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>一个例子</title>
+  <script src="https://cdn.bootcss.com/react/16.4.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.bootcss.com/react-dom/16.4.0/umd/react-dom.production.min.js"></script>
+</head>
+<style>
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .add {
+    margin: 0 10px;
+  }
+</style>
+
+<body>
+  <div id="root">
+  </div>
+  <script>
+    let number = 0;
+    let add = () => {
+      number += 1;
+      render()
+    }
+    let minus = () => {
+      number -= 1;
+      render()
+    }
+    render();
+    function render() {
+      let span = React.createElement('span', { className: 'red' }, number);
+      let addBtn = React.createElement('button', { className: 'add', onClick: add }, '+');
+      let minusBtn = React.createElement('button', { className: 'minus', onClick: minus }, '-');
+      let div = React.createElement('div', { className: 'box' }, span, addBtn, minusBtn);
+
+      ReactDOM.render(div, document.querySelector('#root'));
+    }
+  </script>
+</body>
+
+</html>
