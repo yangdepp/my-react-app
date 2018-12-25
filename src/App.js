@@ -22,7 +22,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="parent">
         <p className="click-type">点了子组件的<span className="type">{this.state.btnType}</span>号</p>
         <Counter name="App" selectType={this.selectType.bind(this)}/>
       </div>
