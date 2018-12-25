@@ -17,9 +17,11 @@ export default {
   methods: {
     add() {
       this.number += 1;
+      this.$emit('selectType',1);
     },
     minus() {
       this.number -= 1;
+      this.$emit('selectType',2);
     }
   }
 };

@@ -13,12 +13,14 @@ class counter extends Component {
     this.setState({
       number: this.state.number += 1,
     })
+    this.props.selectType(1);
   }
   minus = ()=>{
     console.log(this)
     this.setState({
       number: this.state.number -= 1,
     })
+    this.props.selectType(2);
   }
   // minus(){
   //   console.log(this)
