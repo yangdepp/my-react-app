@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Counter from './counter/counter';
+import Lifecycle from './lifecycle/lifecycle';
 
 class App extends Component {
   constructor(){
@@ -24,7 +25,8 @@ class App extends Component {
     return (
       <div className="parent">
         <p className="click-type">点了子组件的<span className="type">{this.state.btnType}</span>号</p>
-        <Counter name="App" selectType={this.selectType.bind(this)}/>
+        {/* <Counter name="App" selectType={this.selectType.bind(this)}/> */}
+        <Lifecycle />
       </div>
     );
   }
