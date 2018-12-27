@@ -4,29 +4,29 @@ import Counter from './counter/counter';
 import Lifecycle from './lifecycle/lifecycle';
 
 class App extends Component {
-  constructor(){
+  onClick() {
+    this.setState({
+      hasChild: false
+    })
+  }
+  callSon(){
+    this.setState({
+      word: '你还好吧'
+    })
+  }
+  constructor() {
     super()
     this.state = {
-      btnType: '?'
+      hasChild: true
     }
   }
-  selectType(type){
-    if(type === 1){
-      this.setState({
-        btnType: '加'
-      })
-    }else{
-      this.setState({
-        btnType: '减'
-      })
-    }
-  }
+
   render() {
     return (
       <div className="parent">
-        <p className="click-type">点了子组件的<span className="type">{this.state.btnType}</span>号</p>
-        {/* <Counter name="App" selectType={this.selectType.bind(this)}/> */}
-        <Lifecycle />
+        <button onClick={() => this.onClick()}>kill son</button>
+        <button onClick={()=>this.callSon()}>call son</button>
+        {this.state.hasChild ? <Lifecycle word={this.state.word} /> : null}
       </div>
     );
   }
