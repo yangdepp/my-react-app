@@ -57,6 +57,8 @@ class lifeCycle extends Component {
     console.log('Update之前 lifecycle组件将要更新了')
   }
 
+  // 允许我们手动控制更新
+  // 避免不必要的更新
   shouldComponentUpdate(nextProps, nextState) {
     if (nextState.n % 2 === 0) {
       return true
