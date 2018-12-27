@@ -5,50 +5,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/redux/4.0.1/redux.js"></script>
   <title>一个例子</title>
 </head>
 <style>
-  .box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px;
-    font-size: 20px;
-    vertical-align: middle;
-  }
-
-  #add {
-    margin: 0 10px;
-  }
-
-  span {
-    color: red;
+  #app {
+    text-align: center;
   }
 </style>
 
 <body>
-  <div class="box">
-    <span id="result">0</span>
-    <button id="add">+</button>
-    <button id="minus">-</button>
+  <div id="app">
   </div>
   <script>
-    targetResult = document.querySelector('#result');
-    addNode = document.querySelector('#add');
-    minusNode = document.querySelector('#minus');
+    function add1() {
+      store.dispatch({ type: 'add', payload: 1 })    //1、dispatch 一个 action
+    }
+    function add2() {
+      store.dispatch({ type: 'add', payload: 2 })
+    }
+    function addIf() {
+      let oldState = store.getState();
+      if (oldState % 2 === 1) {
+        store.dispatch({ type: 'add', payload: 1 })
+      }
+    }
 
-    addNode.addEventListener('click', () => {
-      let number = parseInt(targetResult.innerText, 10);
-      number += 1;
-      targetResult.innerText = number;
-    });
-    minusNode.addEventListener('click', () => {
-      let number = parseInt(targetResult.innerText, 10);
-      number -= 1;
-      targetResult.innerText = number;
+    function addAsync() {
+      setTimeout(() => {
+        store.dispatch({ type: 'add', payload: 1 })
+      }, 2000)
+    }
+
+    function render(store) {
+      var app = document.querySelector('#app');
+      app.innerHTML = `
+        <div>
+          你点击了<span>${store.getState()}</span>次
+          <div>
+            <button id="add1" onclick="add1()">+1</button>
+            <button id="add2" onClick="add2()">+2</button>
+            <button id="add1IfOdd" onClick="addIf()">单数就+1</button>
+            <button id="add1After2Sec" onClick="addAsync()">两秒钟后+1</button>
+          </div>
+        </div>
+      `
+    }
+
+    function stateChanger(state, action) {
+      if (state === undefined) {
+        return 0
+      } else {
+        if (action.type === 'add') {
+          var newState = state + action.payload
+          return newState                        // 2、根据操作生成新的state
+        } else {
+          return state
+        }
+      }
+    }
+
+    var store = Redux.createStore(stateChanger)
+    render(store)
+    store.subscribe(() => {
+      render(store)                             // 3、接受到事件，重新render
     })
   </script>
 </body>
 
 </html>
-
