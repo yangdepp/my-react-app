@@ -4,7 +4,7 @@ import App from './App';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-function stateChanger(state, action) {
+function reducer(state, action) {
   if (state === undefined) {
     return { n: 0 }
   } else {
@@ -17,7 +17,7 @@ function stateChanger(state, action) {
   }
 }
 
-const store = createStore(stateChanger)
+const store = createStore(reducer)
 
 
 ReactDOM.render(
