@@ -6,10 +6,10 @@ import { Provider } from 'react-redux'
 
 function stateChanger(state, action) {
   if (state === undefined) {
-    return {n: 0}
+    return { n: 0 }
   } else {
     if (action.type === 'add') {
-      var newState = state + action.payload
+      var newState = { n: state.n + action.payload }
       return newState
     } else {
       return state
@@ -22,7 +22,7 @@ const store = createStore(stateChanger)
 
 ReactDOM.render(
   <Provider store={store}>
-    <App value={store.getState()}/>,
+    <App />,
   </Provider>,
   document.getElementById('root')
 );
