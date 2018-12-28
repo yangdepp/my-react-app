@@ -32,5 +32,6 @@
   font-size: 20px;
 }
 .parent{
+  text-align: center;
   border: 1px solid red;
 }

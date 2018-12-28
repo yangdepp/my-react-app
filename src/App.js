@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
-import Counter from './counter/counter';
+// import Counter from './counter/counter';
+import { connect } from 'react-redux';
+
+
+
 
 class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      btnType: '?'
-    }
-  }
-  selectType(type){
-    if(type === 1){
-      this.setState({
-        btnType: '加'
-      })
-    }else{
-      this.setState({
-        btnType: '减'
-      })
-    }
-  }
+
   render() {
     return (
       <div className="parent">
-        <p className="click-type">点了子组件的<span className="type">{this.state.btnType}</span>号</p>
-        <Counter name="App" selectType={this.selectType.bind(this)}/>
+        你点击了<span>{this.props.n}</span>次
+          <div>
+          <button id="add1">+1</button>
+          <button id="add2">+2</button>
+          <button id="add1IfOdd">单数就+1</button>
+          <button id="add1After2Sec">两秒钟后+1</button>
+        </div>
       </div>
     );
   }
 }
+
+function x(state) {
+  return {
+    n: state.n
+  }
+}
+
+connect(x)(App)
 
 export default App;
