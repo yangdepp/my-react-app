@@ -20,6 +20,8 @@ class App extends Component {
       })
     }
   }
+  // 不建议在render函数中做this转换
+  // 建议在constructor中做，this.handleClick = this.handleClick.bind(this)
   render() {
     return (
       <div className="parent">
