@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { combineReducers } from 'redux';
-=======
-
->>>>>>> bb2e2e8b0182d52b0a7afde5125b27f90f5ad061
 class counter extends Component {
 
   constructor(props) {
