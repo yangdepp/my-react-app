@@ -1,21 +1,45 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { combineReducers } from 'redux';
+=======
+
+>>>>>>> bb2e2e8b0182d52b0a7afde5125b27f90f5ad061
 class counter extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      number: 0
+      number: 0,
+      peoples: [{
+        id: '1',
+        name: 'yang',
+      },
+      {
+        id: '2',
+        name:'yang1'
+      },
+      {
+        id: '3',
+        name: 'yang2'
+      }]
     }
+    this.minus = this.minus.bind(this)
   }
-  add(){
+  add() {
     console.log(this)
     this.setState({
       number: this.state.number += 1,
     })
     this.props.selectType(1);
   }
-  minus = ()=>{
+  // minus = () => {
+  //   console.log(this)
+  //   this.setState({
+  //     number: this.state.number -= 1,
+  //   })
+  //   this.props.selectType(2);
+  // }
+  minus() {
     console.log(this)
     this.setState({
       number: this.state.number -= 1,
@@ -28,6 +52,12 @@ class counter extends Component {
         <span className="result">{this.state.number}</span>
         <button className='add' onClick={this.add.bind(this)}>+</button>
         <button className='minus' onClick={this.minus}>-</button>
+        <ul>
+          {this.state.peoples.map((item, i) => {
+            return <li key={i}>{item.name}</li>
+            })
+          }
+        </ul>
         <span className="name">父组件名字:{this.props.name}</span>
       </div>
     );
@@ -37,7 +67,7 @@ class counter extends Component {
 export default counter;
 
 /**
- * 
+ *
  * 1、jsx语法写<div>{false}</div> ,写false，null和undefined都不显示，0正常显示，定义一个变量中间有空格，也只显示一个
 2、默认传一个props：className.defaultProps = {name: ‘yang’}，在类里面定义静态方法 static defaultProps = {name: ‘yang’}
 3、props的类型检测???
