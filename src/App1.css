@@ -1,0 +1,23 @@
+.header{
+  display: flex;
+  justify-content: center;
+}
+
+.track{
+  border-bottom: 1px solid #000;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.play{
+  transition: all 1s linear;
+}
+
+body{
+  padding: 40px;
+}
