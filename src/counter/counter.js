@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { combineReducers } from 'redux';
 class counter extends Component {
 
   constructor(props){
@@ -50,3 +51,21 @@ export default counter;
 7、<div ref={(content) => {this.contentRef = content}}></div>
 	在外部改变  this.contentRef.style.color = ‘red’
  */
+
+ //8、 redux的主要概念
+//  action（行为，动作）  ===>发起ajax
+//  reducer（Handler处理器） ===> JSON处理
+//  state（最后的状态）  ===> json保存起来
+
+// import {createStore} from 'redux'
+// const initState = {}
+// const action = {
+//   type: 'init',
+//   payload: 'hello world'
+// };
+// const reducer = (state, action) => {
+//   return Object.assign({}, state, action)
+// }
+// const store = createStore(reducer, initState);
+// store.dispatch(action)
+// console.log(store.getState());
