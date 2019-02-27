@@ -10,19 +10,21 @@ class App extends React.Component {
     }
     this.t0 = new Date()
   }
-  success1 () {
+  success1 (x) {
     console.log('兔子done,cost')
     let r1 = new Date() - this.t0
     this.setState({
       result1: r1
     })
+    console.log(x)
   }
-  success2 () {
+  success2 (x) {
     console.log('乌龟done,cost')
     let r2 = new Date() - this.t0
     this.setState({
       result2: r2
     })
+    console.log(x)
   }
 
 
@@ -34,8 +36,7 @@ class App extends React.Component {
           <Judge />
           <Time2 result={this.state.result2} />
         </div>
-        <Track1 success={this.success1.bind(this)} />
-        <Track2 success={this.success2.bind(this)} />
+        <Playground success1={this.success1.bind(this)}  success2={this.success2.bind(this)}/>
       </div>
     )
   }
@@ -59,6 +60,20 @@ function Time2 (props) {
   )
 }
 
+function Playground (props) {
+  let success1 = props.success1
+  let success2 = props.success2
+
+  return (
+    <div className="playground">
+      <Track1 success={success1}/>
+      <Track2 success={success2}/>
+    </div>
+  )
+}
+
+
+
 class Track1 extends React.Component {
   constructor() {
     super();
@@ -77,7 +92,7 @@ class Track1 extends React.Component {
       })
       if (n >= 100) {
         window.clearInterval(timerId)
-        this.props.success()
+        this.props.success('我是小兔子')
       }
     }, 1000)
   }
@@ -109,7 +124,7 @@ class Track2 extends React.Component {
       })
       if (n >= 100) {
         window.clearInterval(timerId)
-        this.props.success()
+        this.props.success('我是小龟龟')
       }
     }, 1000)
   }
