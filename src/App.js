@@ -1,38 +1,39 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-    }
-  }
-
-  add1() {
-    this.props.onAdd1()
-  }
-  add2() {
-    this.props.onAdd2()
-  }
-  add3() {
-    this.props.onAdd3()
-  }
-  add4() {
-    this.props.onAdd4()
-  }
-
   render() {
     return (
       <div>
-        您点击了<span>{this.props.value}</span>次
+        您点击了<span>{this.props.n}</span>次
       <div>
-          <button onClick={this.add1.bind(this)}>+1</button>
-          <button onClick={this.add2.bind(this)}>+2</button>
-          <button onClick={this.add3.bind(this)}>如果是单数+1</button>
-          <button onClick={() => { this.add4() }}>两秒钟后+1</button>
+          <button onClick={this.props.add1}>+1</button>
+          <button >+2</button>
+          <button >如果是单数+1</button>
+          <button >两秒钟后+1</button>
         </div>
       </div>
     )
   }
 }
 
-export default App;
+// 用来生成props数据
+function getPartialStore(state) {
+  return {
+    n: state.n
+  }
+}
+//用来生成action
+const actionCreator = {
+  add1: () => {
+    return { type: 'add', payload: 1 }
+  }
+}
+
+// function connect(a) {
+//   return function (b) {
+//     console.log(a + b)
+//   }
+// }
+
+export default connect(getPartialStore, actionCreator)(App);
