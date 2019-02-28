@@ -18,15 +18,22 @@ class App extends React.Component {
 }
 
 // 用来生成props数据
-function getPartialStore(state) {
+function mapStateToProps(state) {
   return {
     n: state.n
   }
 }
 //用来生成action
-const actionCreator = {
-  add1: () => {
-    return { type: 'add', payload: 1 }
+// 两种写法，一种是对象，一种是函数
+// const mapDispatchToProps = {
+//   add1: () => {
+//     return { type: 'add', payload: 1 }
+//   }
+// }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    add1: () => dispatch({ type: 'add', payload: 1 })
   }
 }
 
@@ -36,4 +43,4 @@ const actionCreator = {
 //   }
 // }
 
-export default connect(getPartialStore, actionCreator)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
