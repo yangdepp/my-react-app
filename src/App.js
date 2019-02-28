@@ -1,34 +1,37 @@
-import React, { Component } from 'react';
-import './App.css';
-import Counter from './counter/counter';
+import React from 'react'
 
-class App extends Component {
-  constructor(){
+class App extends React.Component {
+  constructor() {
     super()
     this.state = {
-      btnType: '?'
     }
   }
-  selectType(type){
-    if(type === 1){
-      this.setState({
-        btnType: '加'
-      })
-    }else{
-      this.setState({
-        btnType: '减'
-      })
-    }
+
+  add1() {
+    this.props.onAdd1()
   }
-  // 不建议在render函数中做this转换
-  // 建议在constructor中做，this.handleClick = this.handleClick.bind(this)
+  add2() {
+    this.props.onAdd2()
+  }
+  add3() {
+    this.props.onAdd3()
+  }
+  add4() {
+    this.props.onAdd4()
+  }
+
   render() {
     return (
-      <div className="parent">
-        <p className="click-type">点了子组件的<span className="type">{this.state.btnType}</span>号</p>
-        <Counter name="App" selectType={this.selectType.bind(this)}/>
+      <div>
+        您点击了<span>{this.props.value}</span>次
+      <div>
+          <button onClick={this.add1.bind(this)}>+1</button>
+          <button onClick={this.add2.bind(this)}>+2</button>
+          <button onClick={this.add3.bind(this)}>如果是单数+1</button>
+          <button onClick={() => { this.add4() }}>两秒钟后+1</button>
+        </div>
       </div>
-    );
+    )
   }
 }
 
