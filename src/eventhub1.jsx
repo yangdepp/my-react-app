@@ -1,62 +1,26 @@
-import React from 'react';
+import React from 'react'
+import { createStore } from 'redux'
 import './eventhub.css'
-// redux的概念
-// store数据存储
-// 想花钱的动作是action（actionType , payload）
-// 触发花钱是dispatch()
-// 订阅on是subscribe,订阅store的变化
-// 管家对数据的变动是reducer
 
-
-// 数据
-var money = {
-  amount: 100000
-}
-var user = {
-  id: 1212123,
-  nickName: '土豪'
-}
-
-var store = {
-  money,
-  user,
-}
-
-
-// eventhub
-var fnLists = {};
-
-var eventHub = {
-  // 发布事件
-  trigger(eventName, data) {
-    let fnList = fnLists[eventName]
-    if (!fnList) { return }
-    for (let i = 0; i < fnList.length; i++) {
-      fnList[i](data)
-    }
-  },
-  //订阅事件
-  on(eventName, fn) {
-    if (!fnLists[eventName]) {
-      fnLists[eventName] = []
-    }
-    fnLists[eventName].push(fn)
+let reducers = (state, action) => {
+  state = state || {
+    money: { amount: 100000 }
+  }
+  switch (action.type) {
+    case '我想花钱':
+      return {
+        money: {
+          amount: state.money.amount - action.payload
+        }
+      }
+    case 'DECREMENT':
+      return state - 1
+    default:
+      return state
   }
 }
 
-//创建管家
-var x = {
-  init() {
-    eventHub.on('我想花钱', function (data) {  //on subscribe
-      console.log('1111')
-      // 对数据的变动是reducer
-      money.amount -= data
-      // 此时我不知道重新render，所以无法在视图上更新
-      console.log(money)
-    })
-  }
-}
-x.init()
+const store = createStore(reducers)
 
 
 
@@ -64,14 +28,14 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      money: money
+      store: store.getState()
     }
   }
   render() {
     return (
       <div className="root">
-        <BigPapa money={this.state.money} />
-        <YoungPapa money={this.state.money} />
+        <BigPapa money={this.state.store.money} />
+        <YoungPapa money={this.state.store.money} />
       </div>
     )
   }
@@ -126,7 +90,9 @@ class Son2 extends React.Component {
     // '我想花钱'是actionType
     // 100是payload
     // 两个加起来是action
-    eventHub.trigger('我想花钱', 100)
+    // eventHub.trigger('我想花钱', 100)
+    store.dispatch({ type: '我想花钱', payload: 100 })
+
   }
   render() {
     return (
@@ -158,6 +124,8 @@ class Son4 extends React.Component {
     )
   }
 }
+
+
 
 
 export default App
