@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.5"
   },
-  "homepage" : "https://yangdepp.github.io/my-react-app/build",
+  "homepage": "https://yangdepp.github.io/my-react-app/build",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
